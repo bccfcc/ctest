@@ -35,19 +35,17 @@ int main(void){
     int sort_arr[7] = { 0, 25, 10, 17, 6, 12, 9 };
     int *sorted_arr= sort(n, sort_arr);
 
-     printf("\n{");
+    printf("\n{");
     for(int i=0;i<n;i++){
         printf("%i, ", sorted_arr[i]);
     }
     printf("}\n ");
-
-
-
 }
 
 int** copying_arr(int row_size, int col_size, int arr [][col_size]){
-    int ** copy_arr = malloc(sizeof(int)*row_size*col_size+1);
-    for(int k=0;k<row_size;k++){
+	int ** copy_arr = malloc(sizeof(int)*row_size*col_size+1);
+    
+	for(int k=0;k<row_size;k++){
         *(copy_arr+k) = malloc(sizeof(int)*col_size+1);
     }
 
@@ -56,12 +54,11 @@ int** copying_arr(int row_size, int col_size, int arr [][col_size]){
             *(*(copy_arr+i)+j) = arr[i][j];
         }
     }
-
     return copy_arr;
 }
 
 void arr_print(int **get_arr,int row_size,int col_size ){
-    for(int i=0;i<row_size;i++){
+	for(int i=0;i<row_size;i++){
         printf("{");
         for(int j=0;j<col_size;j++){
 
@@ -72,11 +69,9 @@ void arr_print(int **get_arr,int row_size,int col_size ){
         }
         printf("}\n");
     }
-
 }
 
 int * sort(int n, int sort_arr[]){
-
     int tmp;
     for(int i=0;i<n;i++){
         printf("\n");
@@ -89,6 +84,5 @@ int * sort(int n, int sort_arr[]){
             printf("%i, ", sort_arr[j]);
         }
     }
-
     return sort_arr;
 }
