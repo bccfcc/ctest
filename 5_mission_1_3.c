@@ -6,6 +6,7 @@
 
 int** copying_arr(int row_size, int col_size, int arr [][col_size]);
 void arr_print(int **get_arr, int row_size,int col_size);
+int * copy_sort_arr(int n, int sort_arr[]);
 
 int * sort(int n, int sort_arr[]);
 
@@ -33,18 +34,22 @@ int main(void){
 
     int n = 7;
     int sort_arr[7] = { 0, 25, 10, 17, 6, 12, 9 };
-    int *sorted_arr= sort(n, sort_arr);
+
+    printf("\nMission_3 \copied array \n ");
+    int *copied_arr= copy_sort_arr(n, sort_arr);
+
+    int *sorted_arr= sort(n, copied_arr);
 
     printf("\n{");
     for(int i=0;i<n;i++){
-        printf("%i, ", sorted_arr[i]);
+        printf("%i, ", *(sorted_arr+i+1));
     }
     printf("}\n ");
 }
 
 int** copying_arr(int row_size, int col_size, int arr [][col_size]){
 	int ** copy_arr = malloc(sizeof(int)*row_size*col_size+1);
-    
+
 	for(int k=0;k<row_size;k++){
         *(copy_arr+k) = malloc(sizeof(int)*col_size+1);
     }
@@ -71,15 +76,26 @@ void arr_print(int **get_arr,int row_size,int col_size ){
     }
 }
 
-int * sort(int n, int sort_arr[]){
+
+int * copy_sort_arr(int n, int sort_arr[]){
+	int *copy_arr = malloc(sizeof(int)*n+1);
+
+	for(int i=0;i<n+1;i++){
+		*(copy_arr+i) = *(sort_arr+i);
+	}
+	return copy_arr;
+}
+
+
+int * sort(int n, int *sort_arr){
     int tmp;
     for(int i=0;i<n;i++){
         printf("\n");
         for(int j=0;j<n-i-1;j++){
-            if(sort_arr[j]>sort_arr[j+1]){
-                tmp = sort_arr[j];
-                sort_arr[j] = sort_arr[j+1];
-                sort_arr[j+1] = tmp;
+            if(*(sort_arr+j)>*(sort_arr+j+1)){
+                tmp = *(sort_arr+j);
+                *(sort_arr+j) = *(sort_arr+j+1);
+                *(sort_arr+j+1) = tmp;
             }
             printf("%i, ", sort_arr[j]);
         }
