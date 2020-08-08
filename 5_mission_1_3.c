@@ -30,17 +30,19 @@ int main(void){
     arr_print(get_arr, row_size, col_size);
 
 
-    printf("\nMission_3 \nsorted array \n ");
+    printf("\nMission_3 \n ---버블정렬----  \n ");
 
     int n = 7;
     int sort_arr[7] = { 0, 25, 10, 17, 6, 12, 9 };
 
-    printf("\nMission_3 \copied array \n ");
+    printf("\n 배열을 포인터로 형변환하여 저장하기 위한 작업 \n ");
     int *copied_arr= copy_sort_arr(n, sort_arr);
 
     int *sorted_arr= sort(n, copied_arr);
 
-    printf("\n{");
+
+	printf("\n 정렬된 배열 \n ");
+    printf("{");
     for(int i=0;i<n;i++){
         printf("%i, ", *(sorted_arr+i+1));
     }
