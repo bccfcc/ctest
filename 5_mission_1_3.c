@@ -40,7 +40,6 @@ int main(void){
 
     int *sorted_arr= sort(n, copied_arr);
 
-
 	printf("\n 정렬된 배열 \n ");
     printf("{");
     for(int i=0;i<n;i++){
